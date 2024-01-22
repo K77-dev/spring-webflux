@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+//	id 'org.flywaydb.flyway' version '10.6.0'
+}
+
+group = 'br.com.k77.webflux'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'io.jsonwebtoken:jjwt-api:VERSÃO_MAIS_RECENTE'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:VERSÃO_MAIS_RECENTE'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:VERSÃO_MAIS_RECENTE'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'org.flywaydb:flyway-core'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'io.r2dbc:r2dbc-postgresql:0.8.8.RELEASE' // substitua pela versão mais recente ou compatível
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+}
+
+//flyway {
+//	url = 'jdbc:postgresql://localhost:5432/spring-webflux-db'
+//	user = 'postgres'
+//	password = 'root'
+//}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
